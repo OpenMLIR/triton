@@ -180,6 +180,7 @@ def make_default_opt_flags_nvidia(
         block_k = constraints["block_k"]
     else:
         block_k = opt_flags_nvidia.compute_block_k(m, k, is_persistent, lhs_dtype, rhs_dtype, precision_config)
+    block_k //= 2
     # split_k
     if constraints.get("split_k", None) is not None:
         split_k = constraints["split_k"]
